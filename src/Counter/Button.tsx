@@ -2,10 +2,12 @@ import React from "react";
 
 type ButtonPropsType = {
     buttonName:string
-    increase:()=>void
+    increase?:()=>void
     maxValue?:number
     minValue?:number
     startValue:number
+    set?:()=>void
+    button?:boolean
 }
 
 export const Button = (props:ButtonPropsType) =>{
@@ -15,8 +17,12 @@ export const Button = (props:ButtonPropsType) =>{
 
 
     return(
-        <span  >
-            <button className={`${colorOff} ${color}`} onClick={props.increase}>{props.buttonName}</button>
+        <span >
+            {props.buttonName==='set'
+                ? <button onClick={props.set}>{props.buttonName}</button>
+                : <button className={`${color} ${colorOff}`} onClick={props.increase}>{props.buttonName}</button>
+        }
         </span>
     )
 }
+

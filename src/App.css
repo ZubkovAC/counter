@@ -5,13 +5,19 @@ html{
   height: 100%;
   text-align: center;
 }
+.App{
+  display: flex;
+  margin:100px;
+}
 .counter{
-  margin-top: 300px;
-  margin-left: 300px;
-  width: 300px;
+  margin:100px;
+  width: 500px;
   height: auto;
   border: 2px solid white;
   border-radius: 10px;
+}
+.option{
+  font-size: 30px;
 }
 .up{
   margin:20px;
@@ -22,13 +28,36 @@ html{
   font-size: 60px;
   font-weight: 800;
   color:antiquewhite;
+  background-color: mediumaquamarine;
 }
+.upOff{
+  margin:20px;
+  padding: 20px;
+  border: 2px solid white;
+  border-radius: 10px;
+  height: 100px;
+  font-size: 30px;
+  font-weight: 800;
+  color:antiquewhite;
+  background-color: mediumaquamarine;
+}
+
 .down{
   margin:20px;
   padding: 20px;
   border: 2px solid white;
   border-radius: 10px;
   background-color: mediumaquamarine;
+}
+.downOff{
+  margin:20px;
+  padding: 20px;
+  border: 2px solid white;
+  border-radius: 10px;
+  background-color: mediumaquamarine;
+  color: red;
+  opacity: 0.5;
+  font-size: 30px;
 }
 button{
   display: inline-block;
@@ -45,7 +74,6 @@ button{
 }
 
 .button1{
-
   display: inline-block;
   margin: 10px;
   border: 2px solid white;
@@ -62,4 +90,14 @@ button{
 .colorOff{
   color: red;
   opacity: 0.5;
+}
+div button.sum {
+  height: 30px;
+  max-width: 30px;
+}
+input{
+  margin-left: 40px;
+  width: 60px;
+  outline: none;
+  padding-left: 30px;
 }

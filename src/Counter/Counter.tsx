@@ -88,7 +88,6 @@ export const Counter = () => {
         }
     }
 
-
     const onChangeMAX = (onEmax: number) => {
         setmaxValue(onEmax)
         testError(onEmax, minValue)
@@ -100,8 +99,6 @@ export const Counter = () => {
         testError(maxValue, onEmin)
 
     }
-
-
 
     return (
         <div className='App'>

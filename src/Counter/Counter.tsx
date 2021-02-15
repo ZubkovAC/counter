@@ -24,6 +24,8 @@ export const Counter = () => {
                 setValue(downloadMValue)
                 setbutton(true)
             }
+        }else{
+            setbutton(false)
         }
     }
 
@@ -45,6 +47,8 @@ export const Counter = () => {
         }
     }
 
+
+
     useEffect(() => {
         let valueIsString = localStorage.getItem('counter')
         let minValueIsString = localStorage.getItem('minCounter')
@@ -60,11 +64,11 @@ export const Counter = () => {
                 setmaxValue(downloadValue)
                 setmValue(downloadMValue)
                 setValue(downloadMValue)
-                setbutton(true)
+                setbutton(true)                 //position upload
                 setError(false)
             }
         }
-    }, [])
+    },[])
 
     useEffect(() => {
         localStorage.setItem('counter', JSON.stringify(maxValue))
@@ -75,16 +79,15 @@ export const Counter = () => {
     }, [minValue])
 
 
-    const [button, setbutton] = useState<boolean>(false)
+
+    const [button, setbutton] = useState<boolean>(true)
     const [error, setError] = useState<boolean>(false)
 
     const testError = (maxValue: number, minValue: number) => {
         if (minValue >= maxValue || minValue < 0) {
             setError(true)
-            setbutton(true)
         } else {
             setError(false)
-            setbutton(false)
         }
     }
 
@@ -100,14 +103,57 @@ export const Counter = () => {
 
     }
 
-    return (
-        <div className='App'>
+    const Open = () =>{
+        return (
             <div className='counter'>
                 <div className='up'>
+
+                    <Option  error={error} onChangeValue={onChangeMAX}
+                            name={'max value'} valueOption={maxValue}/>
+                    <Option  error={error} onChangeValue={onChangeMIN}
+                            name={'start value'} valueOption={minValue}/>
+                </div>
+                <div className='down'>
+
+                    <div className={button ? 'colorOff' : ''}>
+                        {error
+                            ? <Button error={error} set={set} startValue={startValue} minValue={minValue} increase={reset}
+                                      buttonName='Error'/>
+                            :  <Button error={error} set={set} startValue={startValue} minValue={minValue} increase={reset}
+                                       buttonName='set' /> }
+
+                    </div>
+                </div>
+            </div>
+        )
+    }
+
+    const Close = () =>{
+        return (
+            <div className='counter'>
+                <div className={button ? 'up' : 'upOff'}>
+                    <Table minValue={minValue} table={button ? startValue : 'need press "set" '} maxValue={maxValue}/>
+                </div>
+                <div className={button ? 'down' : 'downOff'}>
+                    <Button button={button} startValue={startValue} maxValue={maxValue} increase={increase}
+                            buttonName='inc'/>
+                    <Button button={button} startValue={startValue} minValue={minValue} increase={reset}
+                            buttonName='reset'/>
+                    <Button set={set} buttonName='set'/>
+                </div>
+            </div>
+        )
+    }
+
+    return (
+        <div className='App'>
+            {/*<div className='counter'>
+                <div className='up'>
+
                     <Option onChangeMIN={onChangeMIN} error={error} onChangeMAX={onChangeMAX}
                             name='max value' valueOption={maxValue}/>
                     <Option onChangeMIN={onChangeMIN} error={error} onChangeMAX={onChangeMAX}
-                            name='start value' valueOption={minValue} />
+                            name='start value' valueOption={minValue}/>
                 </div>
                 <div className='down'>
 
@@ -117,10 +163,14 @@ export const Counter = () => {
                     </div>
 
                 </div>
-            </div>
-            <div className='counter'>
+            </div>*/}
+
+            { !button ?  <Open/> : <Close/>}
+
+
+            {/*<div className='counter'>
                 <div className={button ? 'up' : 'upOff'}>
-                    <Table  minValue={minValue} table={button ? startValue:'need press "set" ' } maxValue={maxValue}/>
+                    <Table minValue={minValue} table={button ? startValue : 'need press "set" '} maxValue={maxValue}/>
                 </div>
                 <div className={button ? 'down' : 'downOff'}>
                     <Button button={button} startValue={startValue} maxValue={maxValue} increase={increase}
@@ -128,7 +178,7 @@ export const Counter = () => {
                     <Button button={button} startValue={startValue} minValue={minValue} increase={reset}
                             buttonName='reset'/>
                 </div>
-            </div>
+            </div>*/}
         </div>
     )
 }

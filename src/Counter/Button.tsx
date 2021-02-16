@@ -7,8 +7,8 @@ type ButtonPropsType = {
     minValue?:number
     startValue?:number
     set?:()=>void
-    button?:boolean
     error?:boolean
+    button?:boolean
 }
 
 export const Button = (props:ButtonPropsType) =>{
@@ -17,7 +17,7 @@ export const Button = (props:ButtonPropsType) =>{
     const colorOff = props.startValue === props.minValue ? 'colorOff' : ''
 
     return(
-        <span >
+        <span className={props.error? 'colorOff' :''} >
 
             {props.buttonName==='set'
                 ? <button onClick={props.set }>{props.buttonName}</button>

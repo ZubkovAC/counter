@@ -11,7 +11,7 @@ export const Table =(props:TablePropsType) =>{
     return (
         <div className={props.table ===props.maxValue? 'color':''}>
            {/* {props.errText? props.table : 'incorrest Value'}*/}
-            {props.minValue < props.maxValue && props.minValue >= 0 ?  props.table : 'incorret Value' }
+            {props.minValue < props.maxValue && props.minValue >= 0 ? 'incorret Value' : props.table  }
         </div>
     )
 }

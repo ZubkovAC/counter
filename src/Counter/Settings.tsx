@@ -13,20 +13,12 @@ type OptionPropsType = {
 
 }
 
-export const Option = (props: OptionPropsType) => {
+export const Settings = (props: OptionPropsType) => {
     return (
         <div className='option'>
             <div className={props.error ? 'colorOff' : 'option'}>
                 {props.name}
-                {props.name === 'max value'
-                    ?
-                    <input type="number" value={props.valueOption} onChange={e => {
-                        props.onChangeValue(+e.currentTarget.value)
-                    }}/>
-                    :
-                    <input type="number" value={props.valueOption} onChange={e => {
-                        props.onChangeValue(+e.currentTarget.value)
-                    }}/>}
+                    <input type="number" value={props.valueOption} onChange={e => props.onChangeValue(+e.currentTarget.value)}/>
             </div>
             {/* <div className={props.error?'colorOff': 'option'}>
                 start value :

@@ -5,9 +5,6 @@ const rootReducer = combineReducers ({
     counter:counterReducer
 })
 
-
-
-
 let preloderState
 const persistedTodostring = localStorage.getItem('app-state')
 if (persistedTodostring)
@@ -21,11 +18,5 @@ store.subscribe( () => {
     localStorage.setItem('app-state',JSON.stringify(store.getState()))
 })
 
-
-
-
-
 export type AppStateType = ReturnType<typeof rootReducer>
 export type AppStoreType = typeof store
-
-let a :AppStoreType

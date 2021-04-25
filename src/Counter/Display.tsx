@@ -13,7 +13,7 @@ type MonitorType = {
 }
 
 
-export const Monitor = (props: MonitorType) => {
+export const Display = (props: MonitorType) => {
     return (
         <div className='counter'>
             <div className={props.blockButton ? 'up' : 'upOff'}>

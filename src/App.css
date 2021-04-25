@@ -8,6 +8,7 @@ html{
 .App{
   display: flex;
   margin:100px;
+  justify-content: center;
 }
 .counter{
   margin:100px;

@@ -7,8 +7,6 @@ const initalState = {
     error: false
 }
 
-type InitialStateType = typeof initalState
-
 export const counterReducer = (state: InitialStateType = initalState, action: ActionType): InitialStateType => {
     switch (action.type) {
         case "INC-VALUE":
@@ -32,6 +30,8 @@ export const counterReducer = (state: InitialStateType = initalState, action: Ac
             return state
     }
 }
+
+// AC
 export const incCounterValueAC = () => ({type: "INC-VALUE"} as const)
 export const errorValueAC = (a:boolean) => ({type: "ERROR-VALUE",a} as const)
 export const setValueFromLocalStorageAC = () => ({type: "SET-VALUE-FROM-LOCAL-STORAGE"} as const)
@@ -40,6 +40,11 @@ export const maxValueLocalStorageAC = (mxvalue: number) => ({type: "MAX-VALUE-LO
 export const minValueLocalStorageAC = (mnvalue: number) => ({type: "MIN-VALUE-LOCAL-STORAGE", mnvalue} as const)
 
 
+
+// Type
+
+type InitialStateType = typeof initalState
+
 export type ActionType =
     IncCounterValueACType |
     ErrorValueAC |
@@ -47,7 +52,6 @@ export type ActionType =
     ResetLocalStorageACType |
     MaxValueLocalStorageACType |
     MinValueLocalStorageACType
-
 
 export type IncCounterValueACType = ReturnType<typeof incCounterValueAC>
 export type ErrorValueAC = ReturnType<typeof errorValueAC>
